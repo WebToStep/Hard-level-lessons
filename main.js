@@ -6,18 +6,10 @@ mission = 2200000,
 period = 12,
 budgetDay = money/30;
 
-// console.log('money: ', typeof money);
-// console.log('income: ', typeof income);
-// console.log('deposit: ', typeof deposit);
+console.log('money: ', typeof money);
+console.log('income: ', typeof income);
+console.log('deposit: ', typeof deposit);
 
-foo({money});
-foo({income});
-foo({deposit});
-function foo(value){
-   console.log(Object.keys(value).toString() + ':', 
-   typeof Object.values(value)[0]);
-
-}
 
 console.log('addExpenses: ', addExpenses.length);
 
