@@ -13,7 +13,7 @@ console.log('deposit: ', typeof deposit);
 console.log('addExpenses: ', addExpenses.length);
 
 console.log('“Период равен ' + period + ' месяцев”');
-console.log('“Цель заработать ' + mission + ' рублей/долларов/гривен/юани”');
+console.log( '“Цель заработать ' + mission + ' рублей/долларов/гривен/юани”' );
 
 console.log('addExpenses: ', addExpenses.toLocaleLowerCase().split(','));
 
