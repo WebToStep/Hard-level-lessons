@@ -1,44 +1,17 @@
-console.warn('Hard code');
+'use strict';
 
-const num = 266219;
-let numArr = num.toString().split('');
+const foo = (e)=>{
+   if(typeof e !== 'string'){
+      alert('Введите строку!');
+   }else{
+      e = e.replace( /\s/g, ""); 
 
-let count = +numArr[0];
-for(let i = 1; i < numArr.length; i++){
-   count *= +numArr[i];
-}
-let degree = count ** 3;
-// console.log('Умноженый массив: ', count);
-// console.log('Итоговое число в степени 3: ', degree);
-// method 1
-// console.log('Первые 2 цифры полученного числа: ', degree.toString().slice(0, 2));
-// method 2
-// console.log('Первые 2 цифры полученного числа: ', degree.toString()[0] + degree.toString()[1]);
-
-
-let lang = 'ru';
-let weaks = [];
-weaks['ru'] = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
-weaks['en'] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-
-
-if(lang === 'ru'){
-   console.log(weaks.ru);
-}else if(lang === 'en'){
-   console.log(weaks.en);
-}else{
-   console.log('Выберите язык');
-}
-
-switch(lang){
-   case 'ru': 
-   console.log(weaks.ru);
-   break;
-   case 'en': 
-   console.log(weaks.en);
-   break;
-   default:
-      console.log('Выберите язык');
+      if (e.length > 30){
+         e = e.substring(0, 30) + '(...)';
+         console.log(e);
+      }
    }
-   
-   console.log(weaks[lang]);
+};
+
+
+foo('1234567890 1234567890 1234567890 0000100023eeeeee');
