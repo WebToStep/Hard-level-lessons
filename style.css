@@ -25,3 +25,10 @@ a {
    right: 20px;
    text-decoration: none;
 }
+
+.today{
+   font-weight: 700;
+}
+.italic{
+   font-style: italic;
+}
