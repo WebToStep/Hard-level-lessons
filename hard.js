@@ -25,7 +25,7 @@ main.append(shortTime);
 
 
 
-function Clock(){
+function Clock() {
    let todayDay = new Date();
    let date = todayDay.toLocaleString('ru', {
       weekday: 'long',
@@ -34,33 +34,48 @@ function Clock(){
       year: 'numeric',
    });
    date = date.charAt(0).toUpperCase() + date.slice(1, -2);
-   
-   let hourString = [' час ', ' часов ', ' часа '];
+
+   const timesString = {
+      h: [' час ', ' часов ', ' часа '],
+      m: [' минута ', ' минут ', ' минуты '],
+      s: [' секунда ', ' секунд ', ' секунды ']
+   };
+
    let hour = todayDay.getHours();
-   
-   if (+hour === 1 || +hour === 21){
-      hour += hourString[0];
-   }else if(+hour > 4 && +hour <21 || +hour === 0){
-      hour += hourString[1];
-   }else {
-      hour += hourString[2];
+   let minutes = todayDay.getMinutes();
+   let seconds = todayDay.getSeconds();
+
+   function textCorrect(value, arr) {
+      let temp = value;
+      if (value > 24) {
+         temp = '' + temp;
+         temp = +temp.charAt(1);
+      }
+      if (+temp === 1 || +temp === 21) {
+         return value += arr[0];
+      } else if (+temp > 4 && +temp < 21 || +temp === 0 || +temp > 24) {
+         return value += arr[1];
+      } else {
+         return value += arr[2];
+      }
    }
 
-   let dateH1 = 'Сегодня ' + date + 'года, ' + hour + todayDay.getMinutes() +
-    ' минут ' + todayDay.getSeconds() + ' секунды';    
-   
+
+   let dateH1 = 'Сегодня ' + date + 'года, ' +
+      textCorrect(hour, timesString.h) + textCorrect(minutes, timesString.m) + textCorrect(seconds, timesString.s);
+
    let dateH2 = ("0" + todayDay.getDate()).slice(-2) + "." +
-   ("0"+(todayDay.getMonth()+1)).slice(-2) + "." +
-   todayDay.getFullYear() + " - " + 
-   ("0" + todayDay.getHours()).slice(-2) + ":" + 
-   ("0" + todayDay.getMinutes()).slice(-2) +  ":" + 
-   ("0" + todayDay.getSeconds()).slice(-2);
-   
+      ("0" + (todayDay.getMonth() + 1)).slice(-2) + "." +
+      todayDay.getFullYear() + " - " +
+      ("0" + todayDay.getHours()).slice(-2) + ":" +
+      ("0" + todayDay.getMinutes()).slice(-2) + ":" +
+      ("0" + todayDay.getSeconds()).slice(-2);
+
 
    longTime.innerText = dateH1;
    shortTime.textContent = dateH2;
 
-   setInterval(()=>Clock(), 1000);
+   setInterval(() => Clock(), 1000);
 }
 
 Clock();
